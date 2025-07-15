@@ -1,51 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HLS Video Player</title>
-  <style>
-    body {
-      background: #000;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+ <head>
+  <meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible'/> 
+  <b:if cond='data:blog.isMobile'> 
+   <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' name='viewport'/> 
+  <b:else/> 
+   <meta content='width=1100' name='viewport'/> 
+  </b:if> 
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+  <b:skin>
+   <![CDATA[/* 
+    body { 
+     font: $(body.font); 
+     color: $(body.text.color); 
+     background: $(body.background); 
+     padding: 0 $(content.shadow.spread) $(content.shadow.spread) $(content.shadow.spread); 
+     $(body.background.override) margin: 0; 
+     padding: 0; 
     }
-    video {
-      width: 100%;
-      max-width: 1280px;
-      height: auto;
-      background: #000;
-    }
-  </style>
-</head>
-<body>
-
+   ]]>
+  </b:skin>
+ </head>
+ <body>
+  <b:section class='main' id='main' showaddelement='yes'/>
+  <!-- Please Keep The Credits -->
 <div style="text-align: center;"><b><span style="font-family: arial; font-size: medium;">NEW WEBSITE :</span></b></div><div style="text-align: center;"><span style="font-size: medium;"><b><br /></b></span></div><div><div style="text-align: center;"><span style="font-family: verdana; font-size: x-large; font-weight: 700;"><br /></span></div><div style="text-align: center;"><b><span style="font-family: verdana; font-size: large;">&nbsp;BTXMOVIES.CC</span></b></div><div style="text-align: center;"><br /></div><div style="text-align: center;">&nbsp;
 
 <button onclick="window.location.href='https://www.btxmovies.cc'" style="background-color: red; color: white; margin-top: 10px; padding: 10px 20px;">GO TO NEW SITE</button></div></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    const video = document.getElementById('video');
-    const videoSrc = 'playlist.m3u8'; // Same folder as index.html
-
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, function() {
-        video.play();
-      });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // Safari support
-      video.src = videoSrc;
-      video.addEventListener('loadedmetadata', function() {
-        video.play();
-      });
-    }
-  </script>
-</body>
+ </body>
 </html>
